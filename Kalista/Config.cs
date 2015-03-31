@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 using LeagueSharp.Common;
 
@@ -68,6 +68,7 @@ namespace Kalista
 
             // JungleClear
             subMenu = _menu.MainMenu.AddSubMenu("JungleClear");
+            ProcessLink("jungleUseQ", subMenu.AddLinkedBool("Use Q"));
             ProcessLink("jungleUseE", subMenu.AddLinkedBool("Use E"));
             ProcessLink("jungleActive", subMenu.AddLinkedKeyBind("JungleClear active", 'V', KeyBindType.Press));
 
@@ -79,6 +80,7 @@ namespace Kalista
 
             // Misc
             subMenu = _menu.MainMenu.AddSubMenu("Misc");
+            ProcessLink("miscKillstealQ", subMenu.AddLinkedBool("Killsteal with Q"));
             ProcessLink("miscKillstealE", subMenu.AddLinkedBool("Killsteal with E"));
             ProcessLink("miscBigE", subMenu.AddLinkedBool("Always E big minions / monsters"));
             ProcessLink("miscUseR", subMenu.AddLinkedBool("Use R to save your soulbound"));
