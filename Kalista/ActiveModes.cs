@@ -5,7 +5,8 @@ using LeagueSharp;
 using LeagueSharp.Common;
 using SharpDX;
 
-namespace VsKalista
+
+namespace Kalista
 {
     public class ActiveModes
     {
