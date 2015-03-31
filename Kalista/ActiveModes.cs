@@ -5,7 +5,7 @@ using LeagueSharp;
 using LeagueSharp.Common;
 using SharpDX;
 
-namespace Kalista
+namespace VsKalista
 {
     public class ActiveModes
     {
@@ -324,10 +324,6 @@ namespace Kalista
                 if (minion != null)
                     E.Cast(true);
             }
-        }
-
-        public static void OnJungleClear()
-        {
             if (Q.IsEnabledAndReady(Mode.JUNGLE))
             {
                 // Get a jungle mob that can die with E
@@ -336,7 +332,6 @@ namespace Kalista
                     Q.Cast(true);
             }
         }
-
 
         public static void OnFlee()
         {
