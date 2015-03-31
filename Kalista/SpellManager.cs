@@ -1,4 +1,4 @@
-﻿using LeagueSharp;
+using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Kalista
@@ -14,12 +14,12 @@ namespace Kalista
         {
             // Initialize spells
             Q = new Spell(SpellSlot.Q, 1150);
-            W = new Spell(SpellSlot.W, 5000);
+            W = new Spell(SpellSlot.W, 5200);
             E = new Spell(SpellSlot.E, 1000);
-            R = new Spell(SpellSlot.R, 1500);
+            R = new Spell(SpellSlot.R, 1400);
 
             // Finetune spells
-            Q.SetSkillshot(0.25f, 40, 1200, true, SkillshotType.SkillshotLine);
+            Q.SetSkillshot(0.25f, 40, 1700, true, SkillshotType.SkillshotLine);
         }
 
         public static Spell GetSpellFromSlot(SpellSlot slot)
