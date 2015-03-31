@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using LeagueSharp;
 using LeagueSharp.Common;
-
 using SharpDX;
 
 namespace Kalista
@@ -18,11 +16,11 @@ namespace Kalista
             get { return SpellManager.Q; }
         }
         private static Spell W
-        { 
+        {
             get { return SpellManager.W; }
         }
         private static Spell E
-        { 
+        {
             get { return SpellManager.E; }
         }
         private static Spell R
@@ -119,6 +117,17 @@ namespace Kalista
                 // Q usage
                 if (Q.IsEnabledAndReady(Mode.COMBO) && !player.IsDashing())
                     Q.Cast(target);
+                //Q ks
+                if (Q.IsReady())
+                    #region Killsteal
+
+                    if (Config.BoolLinks["miscKillstealQ"].Value &&
+                        HeroManager.Enemies.Any(h => h.IsValidTarget(Q.Range) && h.IsRendKillable()))
+                    {
+                        Q.Cast();
+                    }
+
+                    #endregion
 
                 // E usage
                 if (E.IsEnabled(Mode.COMBO) && (E.Instance.State == SpellState.Ready || E.Instance.State == SpellState.Surpressed) && target.HasRendBuff())
@@ -316,6 +325,18 @@ namespace Kalista
                     E.Cast(true);
             }
         }
+
+        public static void OnJungleClear()
+        {
+            if (Q.IsEnabledAndReady(Mode.JUNGLE))
+            {
+                // Get a jungle mob that can die with E
+                var minion = MinionManager.GetMinions(Q.Range, MinionTypes.All, MinionTeam.Neutral).Find(m => m.IsRendKillable());
+                if (minion != null)
+                    Q.Cast(true);
+            }
+        }
+
 
         public static void OnFlee()
         {
